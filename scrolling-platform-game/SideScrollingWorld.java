@@ -23,11 +23,11 @@ public class SideScrollingWorld extends World
     //              Should be a resolution that's a multiple of TILE_SIZE
     private static final int VISIBLE_WIDTH = 640;
     private static final int VISIBLE_HEIGHT = 480;
-    
+
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
     private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
-    
+
     // Defining the boundaries of the scrollable world
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
@@ -63,11 +63,29 @@ public class SideScrollingWorld extends World
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
         addLeftGround();
-        addFences();
+        //addFences();
         addMetalPlateSteps();
         addClouds();
-        addRightGround();
+        //addRightGround();
         addHero();
+
+        //Add tiles on the left
+        //for (int i = 0; i <= 4; i += 1)
+        //{
+        //    int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+        //    int y = 4*TILE_SIZE + HALF_TILE_SIZE;
+        //    MetalPlate plate = new MetalPlate(x,y);
+        //    addObject(plate,x,y);
+        //}
+
+        //Add tiles on the right
+        //for (int i = 0; i <= 4; i += 1)
+        //{
+        //    int x = 11 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+        //    int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
+        //    Ground ground = new Ground(x,y);
+        //    addObject(ground,x,y);
+        //}
     }
 
     /**
@@ -76,15 +94,15 @@ public class SideScrollingWorld extends World
     private void addLeftGround()
     {
         // How many tiles will cover the bottom of the initial visible area of screen?
-        final int tilesToCreate = getWidth() / TILE_SIZE;
+        final int tilesToCreate = getWidth()/TILE_SIZE;
 
         // Loop to create and add the tile objects
-        for (int i = 0; i < tilesToCreate; i += 1)
+        for (int i = 0; i < 7; i += 1)
         {
             // Add ground objects at bottom of screen
             // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
             int x = i * TILE_SIZE + HALF_TILE_SIZE;
-            int y = getHeight() - HALF_TILE_SIZE;
+            int y = getHeight() - 3 * HALF_TILE_SIZE;
 
             // Create a ground tile
             Ground groundTile = new Ground(x, y);
@@ -92,6 +110,117 @@ public class SideScrollingWorld extends World
             // Add the objects
             addObject(groundTile, x, y);
         }
+
+        for (int i = 0; i < 7; i += 1)
+        {
+            // Add ground objects at bottom of screen
+            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            int x = i * TILE_SIZE + HALF_TILE_SIZE;
+            int y = getHeight() - HALF_TILE_SIZE;
+
+            // Create a ground tile
+            GroundBelow groundBelow = new GroundBelow(x, y);
+
+            // Add the objects
+            addObject(groundBelow, x, y);
+        }
+
+        for (int j = 9; j < 14; j += 1)
+        {
+            // Add ground objects at bottom of screen
+            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            int y = j * TILE_SIZE - HALF_TILE_SIZE;
+            int x = 10 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+        }
+
+        for (int i = 9; i < 14; i += 1)
+        {
+            // Add ground objects at bottom of screen
+            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            int y = i * TILE_SIZE - HALF_TILE_SIZE;
+            int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+        }
+
+        for (int j = 9; j < 14; j += 1)
+        {
+            // Add ground objects at bottom of screen
+            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            int y = j * TILE_SIZE - HALF_TILE_SIZE;
+            int x = 10 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+
+            // Create a ground tile
+            GroundBelow groundBelow = new GroundBelow(x, y);
+
+            // Add the objects
+            addObject(groundBelow, x, y);
+        }
+
+        for (int j = 9; j < 14; j += 1)
+        {
+            // Add ground objects at bottom of screen
+            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            int y = j * TILE_SIZE - HALF_TILE_SIZE;
+            int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
+
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+
+            // Create a ground tile
+            GroundBelow groundBelow = new GroundBelow(x, y);
+
+            // Add the objects
+            addObject(groundBelow, x, y);
+        }
+
+        for (int i = 9; i < 16; i += 1)
+        {
+            // Add ground objects at bottom of screen
+            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            int x = i * TILE_SIZE + HALF_TILE_SIZE;
+            int y = getHeight() - 3 * HALF_TILE_SIZE;
+
+            // Create a ground tile
+            Ground groundTile = new Ground(x, y);
+
+            // Add the objects
+            addObject(groundTile, x, y);
+        }
+
+        for (int i = 9; i < 16; i += 1)
+        {
+            // Add ground objects at bottom of screen
+            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
+            int x = i * TILE_SIZE + HALF_TILE_SIZE;
+            int y = getHeight() - HALF_TILE_SIZE;
+
+            // Create a ground tile
+            GroundBelow groundBelow = new GroundBelow(x, y);
+
+            // Add the objects
+            addObject(groundBelow, x, y);
+        }
+
     }
 
     /**
@@ -132,24 +261,62 @@ public class SideScrollingWorld extends World
      */
     private void addMetalPlateSteps()
     {
+        for (int i = 23; i < 26; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
+
+        for (int i = 28; i < 34; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 8 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
+
+        for (int i = 30; i < 33; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 5 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
+
+        for (int i = 33; i < 36; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 11 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
+        
+        for (int i =
+
         // How many plates total?
-        final int COUNT_OF_METAL_PLATES = 20;
-        final int PLATES_PER_GROUP = 4;
+        // final int COUNT_OF_METAL_PLATES = 20;
+        // final int PLATES_PER_GROUP = 4;
 
         // Add groups of plates
-        for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 1)
-        {
-            // Group of four metal plates all at same y position
-            int y = VISIBLE_HEIGHT - HALF_TILE_SIZE * 3 - i * TILE_SIZE;
+        //for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 1)
+        //{
+        // Group of four metal plates all at same y position
+        //    int y = VISIBLE_HEIGHT - HALF_TILE_SIZE * 3 - i * TILE_SIZE;
 
-            // Add the individual plates in a given group
-            for (int j = 0; j < PLATES_PER_GROUP; j += 1)
-            {
-                int x = VISIBLE_WIDTH + TILE_SIZE * 2 + TILE_SIZE * (i + j) + TILE_SIZE * 5 * i;
-                MetalPlate plate = new MetalPlate(x, y);
-                addObject(plate, x, y);
-            }
-        }
+        // Add the individual plates in a given group
+        //    for (int j = 0; j < PLATES_PER_GROUP; j += 1)
+        //    {
+        //        int x = VISIBLE_WIDTH + TILE_SIZE * 2 + TILE_SIZE * (i + j) + TILE_SIZE * 5 * i;
+        //        MetalPlate plate = new MetalPlate(x, y);
+        //        addObject(plate, x, y);
+        //  }
+        //}
     }
 
     /**
@@ -157,12 +324,14 @@ public class SideScrollingWorld extends World
      */
     private void addClouds()
     {
-        Cloud cloud1 = new Cloud(170, 125);
-        addObject(cloud1, 170, 125);
-        Cloud cloud2 = new Cloud(450, 175);
-        addObject(cloud2, 450, 175);
-        Cloud cloud3 = new Cloud(775, 50);
-        addObject(cloud3, 775, 50);
+        Cloud cloud1 = new Cloud(100, 100);
+        addObject(cloud1, 100, 100);
+        Cloud cloud2 = new Cloud(300, 175);
+        addObject(cloud2, 300, 175);
+        Cloud cloud3 = new Cloud(600, 80);
+        addObject(cloud3, 600, 80);
+        Cloud cloud4 = new Cloud(600, 80);
+        addObject(cloud4, 700, 400);
     }
 
     /**
@@ -186,7 +355,7 @@ public class SideScrollingWorld extends World
         theHero = new Hero(initialX);
 
         // Add hero in bottom left corner of screen
-        addObject(theHero, initialX, getHeight() / 4 * 3);
+        addObject(theHero, initialX, 2 * TILE_SIZE);
     }
 
     /**

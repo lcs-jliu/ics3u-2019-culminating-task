@@ -15,16 +15,16 @@ public class Hero extends Actor
      * These are available for use in any method below.
      */    
     // Horizontal speed (change in horizontal position, or delta X)
-    private int deltaX = 4;
+    private int deltaX = 15;
 
     // Vertical speed (change in vertical position, or delta Y)
     private int deltaY = 4;
 
     // Acceleration for falls
-    private int acceleration = 2;
+    private int acceleration = 0;
 
     // Strength of a jump
-    private int jumpStrength = -24;
+    private int jumpStrength = -1000;
 
     // Track current theoretical position in wider "scrollable" world
     private int currentScrollableWorldXPosition;
