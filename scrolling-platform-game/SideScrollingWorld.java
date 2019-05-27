@@ -32,6 +32,8 @@ public class SideScrollingWorld extends World
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
     private static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT;
+    private int n = 42;
+    private int m = 41;
 
     // Hero
     Hero theHero;
@@ -66,7 +68,7 @@ public class SideScrollingWorld extends World
         //addFences();
         addMetalPlateSteps();
         addClouds();
-        //addRightGround();
+        addRightGround();
         addHero();
 
         //Add tiles on the left
@@ -296,27 +298,72 @@ public class SideScrollingWorld extends World
             MetalPlate plate = new MetalPlate(x, y);
             addObject(plate, x, y);
         }
+
+        for (int i = 37; i < 41; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
+
+        for (int i = 35; i < 38; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 6 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
+
+        for (int i = 19; i < 22; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 12 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
+
+        for (int i = 28; i < 32; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 13 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
+
+        for (int i = 22; i < 27; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 6 * TILE_SIZE + HALF_TILE_SIZE;
+
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
         
-        for (int i =
+        for (int i = 7; i < 12; i += 1)
+        {
+            // Position in wider scrollable world
+            n = n + 1;
+            int x = n * TILE_SIZE - HALF_TILE_SIZE;
+            int y = i * TILE_SIZE + HALF_TILE_SIZE;
 
-        // How many plates total?
-        // final int COUNT_OF_METAL_PLATES = 20;
-        // final int PLATES_PER_GROUP = 4;
+            // Create object and add it
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
 
-        // Add groups of plates
-        //for (int i = 0; i < COUNT_OF_METAL_PLATES / PLATES_PER_GROUP; i += 1)
-        //{
-        // Group of four metal plates all at same y position
-        //    int y = VISIBLE_HEIGHT - HALF_TILE_SIZE * 3 - i * TILE_SIZE;
+        for (int i = 50; i < 53; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 10 * TILE_SIZE + HALF_TILE_SIZE;
 
-        // Add the individual plates in a given group
-        //    for (int j = 0; j < PLATES_PER_GROUP; j += 1)
-        //    {
-        //        int x = VISIBLE_WIDTH + TILE_SIZE * 2 + TILE_SIZE * (i + j) + TILE_SIZE * 5 * i;
-        //        MetalPlate plate = new MetalPlate(x, y);
-        //        addObject(plate, x, y);
-        //  }
-        //}
+            MetalPlate plate = new MetalPlate(x, y);
+            addObject(plate, x, y);
+        }
     }
 
     /**
@@ -364,9 +411,9 @@ public class SideScrollingWorld extends World
     private void addRightGround()
     {
         // Constants to control dimensions of the ground at end of world
-        final int COUNT_OF_GROUND = 8;
+        final int COUNT_OF_GROUND = 6;
         final int GROUND_BELOW_COLUMNS = COUNT_OF_GROUND;
-        final int GROUND_BELOW_ROWS = 6;
+        final int GROUND_BELOW_ROWS = 5;
         final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
 
         // 1. Make ground at end of level (top layer)
@@ -374,7 +421,7 @@ public class SideScrollingWorld extends World
         {
             // Position in wider scrollable world
             int x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - i * TILE_SIZE;
-            int y = HALF_VISIBLE_HEIGHT + TILE_SIZE;
+            int y = HALF_VISIBLE_HEIGHT + 2 * TILE_SIZE;
 
             // Create object and add it
             Ground ground = new Ground(x, y);
@@ -388,13 +435,14 @@ public class SideScrollingWorld extends World
             {
                 // Position in wider scrollable world
                 int x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - i * TILE_SIZE;
-                int y = HALF_VISIBLE_HEIGHT + TILE_SIZE + TILE_SIZE * (j + 1);
+                int y = HALF_VISIBLE_HEIGHT + TILE_SIZE + TILE_SIZE * (j+2);
 
                 // Create object and add it
                 GroundBelow groundBelow = new GroundBelow(x, y);
                 addObject(groundBelow, x, y);
             }
         }
+
     }
 
     /**
