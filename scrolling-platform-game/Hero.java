@@ -15,7 +15,7 @@ public class Hero extends Actor
      * These are available for use in any method below.
      */    
     // Horizontal speed (change in horizontal position, or delta X)
-    private int deltaX = 12;
+    private int deltaX = 4;
 
     // Vertical speed (change in vertical position, or delta Y)
     private int deltaY = 4;
@@ -24,7 +24,7 @@ public class Hero extends Actor
     private int acceleration = 2;
 
     // Strength of a jump
-    private int jumpStrength = -1000;
+    private int jumpStrength = -20;
 
     // Track current theoretical position in wider "scrollable" world
     private int currentScrollableWorldXPosition;
@@ -97,6 +97,7 @@ public class Hero extends Actor
     {
         checkKeys();
         checkFall();
+        addScore();
         if (!isGameOver)
         {
             checkGameOver();
@@ -527,5 +528,28 @@ public class Hero extends Actor
             // Tell the user game is over
             world.showText("GAME OVER", world.getWidth() / 2, world.getHeight() / 2);
         }
+    }
+
+    public void addScore()
+    {
+        if (isTouching(Money.class))
+        {
+            removeTouching(Money.class);
+            SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
+            sidescrollingworld.addScore();
+            sidescrollingworld.showScore();
+        }    
+
+    }
+
+    public void encounterMonster()
+    {
+        if (isTouching(BlueMonster.class))
+        {
+            removeTouching(BlueMonster.class);
+            SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
+            sidescrollingworld.setGameOver();
+            
+        }    
     }
 }

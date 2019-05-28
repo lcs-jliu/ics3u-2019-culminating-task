@@ -1,3 +1,4 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -34,10 +35,15 @@ public class SideScrollingWorld extends World
     private static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT;
     private int n = 42;
     private int m = 41;
+    private int frames;
+    private int timeSurvived;
+    private int score = 0;
 
     // Hero
     Hero theHero;
 
+    //add sound
+    GreenfootSound myMusic = new GreenfootSound("Dr. Mario - Fever.mp3");
     // Track whether game is on
     private boolean isGameOver;
 
@@ -70,6 +76,7 @@ public class SideScrollingWorld extends World
         addClouds();
         addRightGround();
         addHero();
+        addMoney();
 
         //Add tiles on the left
         //for (int i = 0; i <= 4; i += 1)
@@ -119,74 +126,6 @@ public class SideScrollingWorld extends World
             // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
             int x = i * TILE_SIZE + HALF_TILE_SIZE;
             int y = getHeight() - HALF_TILE_SIZE;
-
-            // Create a ground tile
-            GroundBelow groundBelow = new GroundBelow(x, y);
-
-            // Add the objects
-            addObject(groundBelow, x, y);
-        }
-
-        for (int j = 9; j < 14; j += 1)
-        {
-            // Add ground objects at bottom of screen
-            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
-            int y = j * TILE_SIZE - HALF_TILE_SIZE;
-            int x = 10 * TILE_SIZE + HALF_TILE_SIZE;
-
-            // Create a ground tile
-            Ground groundTile = new Ground(x, y);
-
-            // Add the objects
-            addObject(groundTile, x, y);
-        }
-
-        for (int i = 9; i < 14; i += 1)
-        {
-            // Add ground objects at bottom of screen
-            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
-            int y = i * TILE_SIZE - HALF_TILE_SIZE;
-            int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
-
-            // Create a ground tile
-            Ground groundTile = new Ground(x, y);
-
-            // Add the objects
-            addObject(groundTile, x, y);
-        }
-
-        for (int j = 9; j < 14; j += 1)
-        {
-            // Add ground objects at bottom of screen
-            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
-            int y = j * TILE_SIZE - HALF_TILE_SIZE;
-            int x = 10 * TILE_SIZE + HALF_TILE_SIZE;
-
-            // Create a ground tile
-            Ground groundTile = new Ground(x, y);
-
-            // Add the objects
-            addObject(groundTile, x, y);
-
-            // Create a ground tile
-            GroundBelow groundBelow = new GroundBelow(x, y);
-
-            // Add the objects
-            addObject(groundBelow, x, y);
-        }
-
-        for (int j = 9; j < 14; j += 1)
-        {
-            // Add ground objects at bottom of screen
-            // NOTE: Actors are added based on their centrepoint, so the math is a bit trickier.
-            int y = j * TILE_SIZE - HALF_TILE_SIZE;
-            int x = 11 * TILE_SIZE + HALF_TILE_SIZE;
-
-            // Create a ground tile
-            Ground groundTile = new Ground(x, y);
-
-            // Add the objects
-            addObject(groundTile, x, y);
 
             // Create a ground tile
             GroundBelow groundBelow = new GroundBelow(x, y);
@@ -281,10 +220,10 @@ public class SideScrollingWorld extends World
             addObject(plate, x, y);
         }
 
-        for (int i = 30; i < 33; i += 1)
+        for (int i = 29; i < 33; i += 1)
         {
             int x = i * TILE_SIZE - HALF_TILE_SIZE;
-            int y = 5 * TILE_SIZE + HALF_TILE_SIZE;
+            int y = 3 * TILE_SIZE + HALF_TILE_SIZE;
 
             MetalPlate plate = new MetalPlate(x, y);
             addObject(plate, x, y);
@@ -338,12 +277,12 @@ public class SideScrollingWorld extends World
         for (int i = 22; i < 27; i += 1)
         {
             int x = i * TILE_SIZE - HALF_TILE_SIZE;
-            int y = 6 * TILE_SIZE + HALF_TILE_SIZE;
+            int y = 5 * TILE_SIZE + HALF_TILE_SIZE;
 
             MetalPlate plate = new MetalPlate(x, y);
             addObject(plate, x, y);
         }
-        
+
         for (int i = 7; i < 12; i += 1)
         {
             // Position in wider scrollable world
@@ -381,6 +320,37 @@ public class SideScrollingWorld extends World
         addObject(cloud4, 700, 400);
     }
 
+    private void addMoney()
+    {
+        for (int i = 50; i < 53; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 9 * TILE_SIZE + HALF_TILE_SIZE;
+
+            Money money = new Money(x, y);
+            addObject(money, x, y);
+        }
+
+        for (int i = 28; i < 32; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 12 * TILE_SIZE + HALF_TILE_SIZE;
+
+            Money money = new Money(x, y);
+            addObject(money, x, y);
+        }
+
+        for (int i = 29; i < 33; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 3 * TILE_SIZE + HALF_TILE_SIZE;
+
+            Money money = new Money(x, y);
+            addObject(money, x, y);
+        }
+
+    }
+
     /**
      * Act
      * 
@@ -388,6 +358,9 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
+        Timing();
+        showScore();
+        playingMusic();
     }
 
     /**
@@ -460,5 +433,64 @@ public class SideScrollingWorld extends World
     {
         isGameOver = true;
     }
-}
 
+    public void trackTime()
+    {
+        // Track frames (fps is about 60)
+        frames += 1;
+
+        // Every second (roughly) reduce the time left
+        if (frames % 60 == 0)
+        {
+            timeSurvived += 1;
+            showTimeSurvived();
+        }
+
+        //    if(lives == 0)
+        //{
+        //    gameOn = false;
+        //    showText("Game Over",500,250);
+        //    showText("Time Survived:" + timeSurvived,500,300);
+        //    showText("",100,50);
+        //    showText("",100,100);
+        //}
+    }
+
+    private void showTimeSurvived()
+    {
+        showText("Time Survived:" + timeSurvived,100,50);
+    }
+
+    private void Timing()
+    {
+        if (isGameOver == false)
+        {
+            showTimeSurvived();
+            trackTime();
+        }
+    }
+
+    private void trackScore()
+    {
+        addScore();
+    }
+
+    public void addScore()
+    {
+        score += 1;
+    }
+
+    public void showScore()
+    {
+        showText("Score:" + score,550,50);
+    }
+
+    private void playingMusic()
+    {
+        if (isGameOver == false)
+        {
+            myMusic.play();
+        }
+    }
+    
+}
