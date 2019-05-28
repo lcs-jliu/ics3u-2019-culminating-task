@@ -77,24 +77,7 @@ public class SideScrollingWorld extends World
         addRightGround();
         addHero();
         addMoney();
-
-        //Add tiles on the left
-        //for (int i = 0; i <= 4; i += 1)
-        //{
-        //    int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-        //    int y = 4*TILE_SIZE + HALF_TILE_SIZE;
-        //    MetalPlate plate = new MetalPlate(x,y);
-        //    addObject(plate,x,y);
-        //}
-
-        //Add tiles on the right
-        //for (int i = 0; i <= 4; i += 1)
-        //{
-        //    int x = 11 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-        //    int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
-        //    Ground ground = new Ground(x,y);
-        //    addObject(ground,x,y);
-        //}
+        addMonster();
     }
 
     /**
@@ -349,6 +332,14 @@ public class SideScrollingWorld extends World
             addObject(money, x, y);
         }
 
+        for (int i = 22; i < 27; i += 1)
+        {
+            int x = i * TILE_SIZE - HALF_TILE_SIZE;
+            int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
+
+            Money money = new Money(x, y);
+            addObject(money, x, y);
+        }
     }
 
     /**
@@ -418,6 +409,21 @@ public class SideScrollingWorld extends World
 
     }
 
+    private void addMonster()
+    {
+        BlueMonster monster1 = new BlueMonster(304, 400);
+        addObject(monster1, 304, 400);
+
+        BlueMonster monster2 = new BlueMonster(864, 240);
+        addObject(monster2, 864, 240);
+
+        BlueMonster monster3 = new BlueMonster(864, 80);
+        addObject(monster3, 864, 80);
+
+        BlueMonster monster4 = new BlueMonster(864, 80);
+        addObject(monster4, 1664, 272);
+    }
+
     /**
      * Return an object reference to the hero.
      */
@@ -483,5 +489,5 @@ public class SideScrollingWorld extends World
             myMusic.play();
         }
     }
-    
+
 }

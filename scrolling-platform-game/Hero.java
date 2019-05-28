@@ -553,7 +553,7 @@ public class Hero extends Actor
             isGameOver = true;
             sidescrollingworld.removeObject(this);
             sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
-            
+
         }    
     }
 }

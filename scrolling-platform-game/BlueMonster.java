@@ -23,27 +23,19 @@ public class BlueMonster extends Enemy
      * Act - do whatever the BlueMonster wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int leftTurn = 270;
-    private int rightTurn = 480;
+
     private int speed = 2;
+    private int frames = 0;
 
     public void act() 
     {
         // Add your action code here.
         setLocation ( getX() + speed, getY() );
-
-        Actor actor = getOneIntersectingObject(null);
-        if(actor != null) {
-            actor.setLocation ( actor.getX() + speed, actor.getY() );
-        }
-
-        if (atTurningPoint()) {
+        frames += 1;
+        if(frames == 100)
+        {
             speed = -speed;
+            frames = 0;
         }
-    }    
-
-    public boolean atTurningPoint()
-    {
-        return (getX() <= leftTurn || getX() >= rightTurn);
     }
 }

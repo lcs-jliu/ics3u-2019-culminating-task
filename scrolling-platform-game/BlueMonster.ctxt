@@ -6,6 +6,4 @@ comment1.target=BlueMonster(int,\ int)
 comment1.text=\n\ Constructor\n\ \n\ Called\ once\ when\ object\ is\ created.\n
 comment2.params=
 comment2.target=void\ act()
-comment3.params=
-comment3.target=boolean\ atTurningPoint()
-numComments=4
+numComments=3
