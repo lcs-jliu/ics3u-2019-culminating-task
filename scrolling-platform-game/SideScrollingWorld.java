@@ -445,15 +445,6 @@ public class SideScrollingWorld extends World
             timeSurvived += 1;
             showTimeSurvived();
         }
-
-        //    if(lives == 0)
-        //{
-        //    gameOn = false;
-        //    showText("Game Over",500,250);
-        //    showText("Time Survived:" + timeSurvived,500,300);
-        //    showText("",100,50);
-        //    showText("",100,100);
-        //}
     }
 
     private void showTimeSurvived()

@@ -98,6 +98,7 @@ public class Hero extends Actor
         checkKeys();
         checkFall();
         addScore();
+        encounterMonster();
         if (!isGameOver)
         {
             checkGameOver();
@@ -549,6 +550,9 @@ public class Hero extends Actor
             removeTouching(BlueMonster.class);
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.setGameOver();
+            isGameOver = true;
+            sidescrollingworld.removeObject(this);
+            sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
             
         }    
     }
