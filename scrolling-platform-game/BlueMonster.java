@@ -29,11 +29,12 @@ public class BlueMonster extends Enemy
 
     public void act() 
     {
-        // Add your action code here.
+        // The monster will move right for about 1.6 seconds and turn around
         setLocation ( getX() + speed, getY() );
         frames += 1;
         if(frames == 100)
         {
+            //Turn around and go back
             speed = -speed;
             frames = 0;
         }

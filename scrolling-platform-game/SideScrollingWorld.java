@@ -1,4 +1,3 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -295,6 +294,7 @@ public class SideScrollingWorld extends World
      */
     private void addClouds()
     {
+        //Add clouds into the world
         Cloud cloud1 = new Cloud(100, 100);
         addObject(cloud1, 100, 100);
         Cloud cloud2 = new Cloud(300, 175);
@@ -307,6 +307,7 @@ public class SideScrollingWorld extends World
 
     private void addMoney()
     {
+        //Add coins into the world
         for (int i = 50; i < 53; i += 1)
         {
             int x = i * TILE_SIZE - HALF_TILE_SIZE;
@@ -413,6 +414,8 @@ public class SideScrollingWorld extends World
 
     private void addMonster()
     {
+        //Add monsters to the world
+        
         BlueMonster monster1 = new BlueMonster(304, 400);
         addObject(monster1, 304, 400);
 
@@ -457,11 +460,13 @@ public class SideScrollingWorld extends World
 
     private void showTimeSurvived()
     {
+        //Show how many seconds you have survived in the top left
         showText("Time Survived:" + timeSurvived,100,50);
     }
 
     private void Timing()
     {
+        //Track the time when game starts
         if (isGameOver == false)
         {
             showTimeSurvived();
@@ -469,23 +474,21 @@ public class SideScrollingWorld extends World
         }
     }
 
-    private void trackScore()
-    {
-        addScore();
-    }
-
     public void addScore()
     {
+        //Add score when the play touches coints
         score += 1;
     }
 
     public void showScore()
     {
+        //Show score at the top right corner of the world
         showText("Score:" + score,550,50);
     }
 
     private void playingMusic()
     {
+        //Play music when the game starts
         if (isGameOver == false)
         {
             myMusic.play();
