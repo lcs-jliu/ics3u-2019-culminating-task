@@ -99,6 +99,8 @@ public class Hero extends Actor
         checkFall();
         addScore();
         encounterMonster();
+        onTopOfCrab();
+        encounterCrab();
         if (!isGameOver)
         {
             checkGameOver();
@@ -546,6 +548,21 @@ public class Hero extends Actor
 
     }
 
+    public void onTopOfCrab()
+    {
+        if (isTouching(Crab.class))
+        {
+            //Add score when the hero hits on top of the crab
+            removeTouching(Crab.class);
+            SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
+            sidescrollingworld.addMoreScore();
+            sidescrollingworld.showScore();
+            //GreenfootSound Defeating = new GreenfootSound("");
+            //Defeating.play();
+        }    
+
+    }
+
     public void encounterMonster()
     {
         if (isTouching(BlueMonster.class))
@@ -555,7 +572,21 @@ public class Hero extends Actor
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.setGameOver();
             isGameOver = true;
-            sidescrollingworld.removeObject(this);
+            //getWorld().removeObject(this);
+            sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
+            //GreenfootSound Dieing = new GreenfootSound("");
+            //Dieing.play();
+        }    
+    }
+
+    public void encounterCrab()
+    {
+        if (isTouching(Crab.class))
+        {
+            //End the game when the hero touches the Crab
+            SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
+            sidescrollingworld.setGameOver();
+            isGameOver = true;
             sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
             //GreenfootSound Dieing = new GreenfootSound("");
             //Dieing.play();

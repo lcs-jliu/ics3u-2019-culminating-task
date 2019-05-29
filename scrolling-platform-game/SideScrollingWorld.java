@@ -68,7 +68,7 @@ public class SideScrollingWorld extends World
      */
     private void setup()
     {
-        // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
+        // Set up all the decorations,enemies,platforms and coins in the wrold
         addLeftGround();
         addFences();
         addMetalPlateSteps();
@@ -77,6 +77,7 @@ public class SideScrollingWorld extends World
         addHero();
         addMoney();
         addMonster();
+        addCrab();
     }
 
     /**
@@ -185,7 +186,7 @@ public class SideScrollingWorld extends World
     private void addMetalPlateSteps()
     {
         //Add the metal plate steps in the middle
-        
+
         for (int i = 23; i < 26; i += 1)
         {
             int x = i * TILE_SIZE - HALF_TILE_SIZE;
@@ -415,7 +416,7 @@ public class SideScrollingWorld extends World
     private void addMonster()
     {
         //Add monsters to the world
-        
+
         BlueMonster monster1 = new BlueMonster(304, 400);
         addObject(monster1, 304, 400);
 
@@ -425,8 +426,14 @@ public class SideScrollingWorld extends World
         BlueMonster monster3 = new BlueMonster(864, 80);
         addObject(monster3, 864, 80);
 
-        BlueMonster monster4 = new BlueMonster(864, 80);
+        BlueMonster monster4 = new BlueMonster(1664, 272);
         addObject(monster4, 1664, 272);
+    }
+
+    private void addCrab()
+    {
+        Crab crab1 = new Crab(864, 80);
+        addObject(crab1, 1136, 176);
     }
 
     /**
@@ -493,6 +500,12 @@ public class SideScrollingWorld extends World
         {
             myMusic.play();
         }
+    }
+
+    public void addMoreScore()
+    {
+        //Add more score when touch the top of crab
+        score += 4;
     }
 
 }
