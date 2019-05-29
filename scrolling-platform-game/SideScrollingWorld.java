@@ -432,8 +432,10 @@ public class SideScrollingWorld extends World
 
     private void addCrab()
     {
-        Crab crab1 = new Crab(864, 80);
+        Crab crab1 = new Crab(1136, 176);
         addObject(crab1, 1136, 176);
+        Crab crab2 = new Crab(864, 80);
+        addObject(crab2, 752, 302);
     }
 
     /**
