@@ -539,6 +539,8 @@ public class Hero extends Actor
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.addScore();
             sidescrollingworld.showScore();
+            //GreenfootSound Winning = new GreenfootSound("");
+            //Winning.play();
         }    
 
     }
@@ -553,7 +555,8 @@ public class Hero extends Actor
             isGameOver = true;
             sidescrollingworld.removeObject(this);
             sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
-
+            //GreenfootSound Dieing = new GreenfootSound("");
+            //Dieing.play();
         }    
     }
 }

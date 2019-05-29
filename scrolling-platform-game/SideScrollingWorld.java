@@ -360,13 +360,13 @@ public class SideScrollingWorld extends World
     private void addHero()
     {
         // Initial horizontal position
-        int initialX = TILE_SIZE * 3;
+        int initialX = TILE_SIZE * 2;
 
         // Instantiate the hero object
         theHero = new Hero(initialX);
 
         // Add hero in bottom left corner of screen
-        addObject(theHero, initialX, 2 * TILE_SIZE);
+        addObject(theHero, initialX, 10 * TILE_SIZE);
     }
 
     /**
