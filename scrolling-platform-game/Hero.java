@@ -563,6 +563,8 @@ public class Hero extends Actor
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.addScore();
             sidescrollingworld.showScore();
+            
+            //Play winning sound effect when the hero touches the coin
             GreenfootSound Winning = new GreenfootSound("WinningSound.wav");
             Winning.play();
 
@@ -579,6 +581,8 @@ public class Hero extends Actor
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.addMoreScore();
             sidescrollingworld.showScore();
+            
+            //Play defeating sound effect when the hero stands on top of the crab
             GreenfootSound Defeating = new GreenfootSound("DefeatingSound.wav");
             Defeating.play();
         }    
@@ -593,6 +597,8 @@ public class Hero extends Actor
             sidescrollingworld.setGameOver();
             isGameOver = true;
             sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
+            
+            //Play dieing sound effect when the hero touches the crab
             GreenfootSound Dieing = new GreenfootSound("DieingSound.wav");
             Dieing.play();
             Greenfoot.stop();
@@ -609,6 +615,8 @@ public class Hero extends Actor
             sidescrollingworld.setGameOver();
             isGameOver = true;
             sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
+            
+            //Play dieing sound effect when the hero touches the monster
             GreenfootSound Dieing = new GreenfootSound("DieingSound.wav");
             Dieing.play();
             Greenfoot.stop();
