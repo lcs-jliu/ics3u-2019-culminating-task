@@ -542,8 +542,9 @@ public class Hero extends Actor
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.addScore();
             sidescrollingworld.showScore();
-            //GreenfootSound Winning = new GreenfootSound("");
-            //Winning.play();
+            GreenfootSound Winning = new GreenfootSound("WinningSound.wav");
+            Winning.play();
+            
         }    
 
     }
@@ -557,8 +558,8 @@ public class Hero extends Actor
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.addMoreScore();
             sidescrollingworld.showScore();
-            //GreenfootSound Defeating = new GreenfootSound("");
-            //Defeating.play();
+            GreenfootSound Defeating = new GreenfootSound("DefeatingSound.wav");
+            Defeating.play();
         }    
 
     }
@@ -576,6 +577,7 @@ public class Hero extends Actor
             sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
             //GreenfootSound Dieing = new GreenfootSound("");
             //Dieing.play();
+            Greenfoot.stop();
         }    
     }
 
@@ -590,6 +592,7 @@ public class Hero extends Actor
             sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
             //GreenfootSound Dieing = new GreenfootSound("");
             //Dieing.play();
+            Greenfoot.stop();
         }    
     }
 }
