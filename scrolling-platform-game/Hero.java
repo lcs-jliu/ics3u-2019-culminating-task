@@ -209,6 +209,27 @@ public class Hero extends Actor
     }
 
     /**
+     * Is the hero currently touching a solid object? (any subclass of Platform)
+     */
+    public boolean onCrab()
+    {
+        // Get an reference to a solid object (subclass of Platform) below the hero, if one exists
+        Actor directlyUnder = getOneObjectAtOffset(0, getImage().getHeight() / 2, Crab.class);
+        Actor frontUnder = getOneObjectAtOffset(getImage().getWidth() / 3, getImage().getHeight() / 2, Crab.class);
+        Actor rearUnder = getOneObjectAtOffset(0 - getImage().getWidth() / 3, getImage().getHeight() / 2, Crab.class);
+
+        // If there is no solid object below (or slightly in front of or behind) the hero...
+        if (directlyUnder == null && frontUnder == null && rearUnder == null)
+        {
+            return false;   // Not on a solid object
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    /**
      * Make the hero jump.
      */
     public void jump()
@@ -544,14 +565,14 @@ public class Hero extends Actor
             sidescrollingworld.showScore();
             GreenfootSound Winning = new GreenfootSound("WinningSound.wav");
             Winning.play();
-            
+
         }    
 
     }
 
     public void onTopOfCrab()
     {
-        if (isTouching(Crab.class))
+        if (onCrab())
         {
             //Add score when the hero hits on top of the crab
             removeTouching(Crab.class);
@@ -561,7 +582,21 @@ public class Hero extends Actor
             GreenfootSound Defeating = new GreenfootSound("DefeatingSound.wav");
             Defeating.play();
         }    
+    }
 
+    public void encounterCrab()
+    {
+        if (isTouching(Crab.class))
+        {
+            //End the game when the hero touches the Crab
+            SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
+            sidescrollingworld.setGameOver();
+            isGameOver = true;
+            sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
+            //GreenfootSound Dieing = new GreenfootSound("");
+            //Dieing.play();
+            Greenfoot.stop();
+        }    
     }
 
     public void encounterMonster()
@@ -581,18 +616,4 @@ public class Hero extends Actor
         }    
     }
 
-    public void encounterCrab()
-    {
-        if (isTouching(Crab.class))
-        {
-            //End the game when the hero touches the Crab
-            SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
-            sidescrollingworld.setGameOver();
-            isGameOver = true;
-            sidescrollingworld.showText("GAME OVER", sidescrollingworld.getWidth() / 2, sidescrollingworld.getHeight() / 2);
-            //GreenfootSound Dieing = new GreenfootSound("");
-            //Dieing.play();
-            Greenfoot.stop();
-        }    
-    }
 }
