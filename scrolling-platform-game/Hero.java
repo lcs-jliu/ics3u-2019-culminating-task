@@ -535,6 +535,7 @@ public class Hero extends Actor
     {
         if (isTouching(Money.class))
         {
+            //Add score when the hero touches coin
             removeTouching(Money.class);
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.addScore();
@@ -549,6 +550,7 @@ public class Hero extends Actor
     {
         if (isTouching(BlueMonster.class))
         {
+            //End the game when the hero touches the monster
             removeTouching(BlueMonster.class);
             SideScrollingWorld sidescrollingworld = (SideScrollingWorld)getWorld();
             sidescrollingworld.setGameOver();

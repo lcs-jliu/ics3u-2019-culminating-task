@@ -71,7 +71,7 @@ public class SideScrollingWorld extends World
     {
         // TO STUDENTS: Add, revise, or remove methods as needed to define your own game's world
         addLeftGround();
-        //addFences();
+        addFences();
         addMetalPlateSteps();
         addClouds();
         addRightGround();
@@ -153,29 +153,29 @@ public class SideScrollingWorld extends World
     private void addFences()
     {
         // Three fences on left side of world
-        int x = HALF_TILE_SIZE + TILE_SIZE * 5;
-        int y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE;
+        int x = HALF_TILE_SIZE + TILE_SIZE * 2;
+        int y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE * 2;
         Fence fence1 = new Fence(x, y);
         addObject(fence1, x, y);
 
-        x = HALF_TILE_SIZE + TILE_SIZE * 6;
-        y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE;        
+        x = HALF_TILE_SIZE + TILE_SIZE * 3;
+        y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE * 2;        
         Fence fence2 = new Fence(x, y);
         addObject(fence2, x, y);
 
-        x = HALF_TILE_SIZE + TILE_SIZE * 7;
-        y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE;
+        x = HALF_TILE_SIZE + TILE_SIZE * 4;
+        y = VISIBLE_HEIGHT - HALF_TILE_SIZE - TILE_SIZE * 2;
         Fence fence3 = new Fence(x, y);
         addObject(fence3, x, y);
 
         // Two fences on right side of world
-        x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - TILE_SIZE * 3;
-        y = VISIBLE_HEIGHT / 2;
+        x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - TILE_SIZE * 2;
+        y = VISIBLE_HEIGHT / 2 + TILE_SIZE;
         Fence fence4 = new Fence(x, y);
         addObject(fence4, x, y);
 
-        x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - TILE_SIZE * 4;
-        y = VISIBLE_HEIGHT / 2;
+        x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - TILE_SIZE * 3;
+        y = VISIBLE_HEIGHT / 2 + TILE_SIZE;
         Fence fence5 = new Fence(x, y);
         addObject(fence5, x, y);
     }
@@ -185,6 +185,8 @@ public class SideScrollingWorld extends World
      */
     private void addMetalPlateSteps()
     {
+        //Add the metal plate steps in the middle
+        
         for (int i = 23; i < 26; i += 1)
         {
             int x = i * TILE_SIZE - HALF_TILE_SIZE;
