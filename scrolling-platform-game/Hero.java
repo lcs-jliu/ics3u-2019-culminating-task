@@ -15,7 +15,7 @@ public class Hero extends Actor
      * These are available for use in any method below.
      */    
     // Horizontal speed (change in horizontal position, or delta X)
-    private int deltaX = 4;
+    private int deltaX = 9/2;
 
     // Vertical speed (change in vertical position, or delta Y)
     private int deltaY = 4;

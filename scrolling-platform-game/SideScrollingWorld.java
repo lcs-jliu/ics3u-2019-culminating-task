@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+;import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Template for a side-scrolling platform game.
@@ -32,11 +32,10 @@ public class SideScrollingWorld extends World
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH * 3;
     private static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT;
-    private int n = 42;
-    private int m = 41;
     private int frames;
     private int timeSurvived;
     private int score = 0;
+    private int n = 42;
 
     // Hero
     Hero theHero;
@@ -250,7 +249,7 @@ public class SideScrollingWorld extends World
             addObject(plate, x, y);
         }
 
-        for (int i = 28; i < 32; i += 1)
+        for (int i = 27; i < 32; i += 1)
         {
             int x = i * TILE_SIZE - HALF_TILE_SIZE;
             int y = 13 * TILE_SIZE + HALF_TILE_SIZE;
@@ -318,7 +317,7 @@ public class SideScrollingWorld extends World
             addObject(money, x, y);
         }
 
-        for (int i = 28; i < 32; i += 1)
+        for (int i = 27; i < 32; i += 1)
         {
             int x = i * TILE_SIZE - HALF_TILE_SIZE;
             int y = 12 * TILE_SIZE + HALF_TILE_SIZE;
@@ -432,10 +431,10 @@ public class SideScrollingWorld extends World
 
     private void addCrab()
     {
-        Crab crab1 = new Crab(1136, 176);
-        addObject(crab1, 1136, 176);
-        Crab crab2 = new Crab(864, 80);
-        addObject(crab2, 752, 302);
+        Crab crab1 = new Crab(1104, 176);
+        addObject(crab1, 1104, 176);
+        Crab crab2 = new Crab(768, 302);
+        addObject(crab2, 768, 302);
     }
 
     /**
@@ -507,7 +506,7 @@ public class SideScrollingWorld extends World
     public void addMoreScore()
     {
         //Add more score when touch the top of crab
-        score += 4;
+        score += 5;
     }
 
 }
